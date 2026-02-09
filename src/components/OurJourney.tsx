@@ -122,17 +122,25 @@ Kirloskar.`
                     )}>
                         {view === 'journey' ? (
                             <>
-                                <h2 className="text-5xl md:text-7xl font-bebas font-bold mb-8 tracking-wide italic leading-none">OUR JOURNEY</h2>
+                                <h2 className="text-5xl md:text-5xl font-bebas font-bold mb-8 tracking-wide italic leading-none">OUR JOURNEY</h2>
                                 <div className="space-y-6 text-lg font-light text-gray-200 leading-relaxed">
-                                    <p>To expand the manufacturing operations in South Asia, Taikisha in the year 2007 ventured out to establish state-of-the-art manufacturing in Pune as Taikisha India.</p>
-                                    <p>The key reason was to manufacture Taikisha&apos;s own product and later diversify into sheet metal forming and assembly.</p>
-                                    <p>In 2013, Taikisha India expanded further with a Vadodara plant equipped with the latest quality machines.</p>
+                                    <p>To expand the manufacturing operations in South Asia, Taikisha in the year
+2007 ventured out to establish state-of-the-art manufacturing in Pune as
+Taikisha India. This facility is equipped with multiple high endurance
+machines like laser CNC punching, CNC bending and many more. The key
+reason to establish the facility was to manufacture Taikisha's own product
+which included painting systems and, in an attempt to diversify, Taikisha in
+2009 by using the latest technologies also got involved in other areas of
+sheet metal forming and assembly.</p>
+                                    <p>To meet our esteemed clientele's expectations, Taikisha India in 2013
+embarked on expanding the business and installed a plant in Vadodara,
+Gujarat, equipped with the latest quality machines.</p>
                                 </div>
                             </>
                         ) : (
                             <>
                                 {/* Dynamically rendered Title and Paragraph based on activeIndex */}
-                                <h2 className="text-[2rem] font-bebas font-bold text-white mb-6 uppercase">
+                                <h2 className="text-[2rem] font-bebas italic font-bold text-white mb-6 uppercase">
                                     {serviceItems[activeIndex].title}
                                 </h2>
                                 <p className="text-lg text-gray-200 mb-6 max-w-lg leading-relaxed">

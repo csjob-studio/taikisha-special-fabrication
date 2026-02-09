@@ -2,34 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-}
-
-@layer base {
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+/* ... keep your font variables and base body styles ... */
 
 html.lenis,
 html.lenis body {
   height: auto;
 }
 
-.lenis.lenis-smooth {
+/* Remove CSS snapping as we will use GSAP instead */
+html, body {
+ overflow-x: hidden;
+  /* DO NOT use scroll-behavior: smooth here */
   scroll-behavior: auto !important;
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+/* Hide scrollbar */
+html::-webkit-scrollbar {
+  display: none;
 }
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
