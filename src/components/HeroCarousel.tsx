@@ -28,30 +28,33 @@ export function HeroCarousel({ images }: HeroCarouselProps) {
     const { contextSafe } = useGSAP({ scope: containerRef });
 
     const goToSlide = useCallback(
-        contextSafe((index: number) => {
-            if (isAnimating || index === currentIndex) return;
-            setIsAnimating(true);
+        (index: number) => {
+            const animate = contextSafe(() => {
+                if (isAnimating || index === currentIndex) return;
+                setIsAnimating(true);
 
-            const slides = gsap.utils.toArray<HTMLElement>('.hero-slide');
-            const currentSlide = slides[currentIndex];
-            const nextSlide = slides[index];
+                const slides = gsap.utils.toArray<HTMLElement>('.hero-slide');
+                const currentSlide = slides[currentIndex];
+                const nextSlide = slides[index];
 
-            gsap.set(nextSlide, { xPercent: 100, autoAlpha: 1, zIndex: 30 });
-            gsap.set(currentSlide, { zIndex: 20, xPercent: 0 });
+                gsap.set(nextSlide, { xPercent: 100, autoAlpha: 1, zIndex: 30 });
+                gsap.set(currentSlide, { zIndex: 20, xPercent: 0 });
 
-            const tl = gsap.timeline({
-                onComplete: () => {
-                    setIsAnimating(false);
-                    setCurrentIndex(index);
-                    slides.forEach((slide, i) => {
-                        if (i !== index) gsap.set(slide, { autoAlpha: 0, zIndex: 0, xPercent: 100 });
-                    });
-                },
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        setIsAnimating(false);
+                        setCurrentIndex(index);
+                        slides.forEach((slide, i) => {
+                            if (i !== index) gsap.set(slide, { autoAlpha: 0, zIndex: 0, xPercent: 100 });
+                        });
+                    },
+                });
+
+                tl.to(currentSlide, { xPercent: -30, duration: slideDuration, ease: 'power3.inOut' })
+                    .to(nextSlide, { xPercent: 0, duration: slideDuration, ease: 'power3.inOut' }, '<');
             });
-
-            tl.to(currentSlide, { xPercent: -30, duration: slideDuration, ease: 'power3.inOut' })
-              .to(nextSlide, { xPercent: 0, duration: slideDuration, ease: 'power3.inOut' }, '<');
-        }),
+            animate();
+        },
         [currentIndex, isAnimating, contextSafe]
     );
 
