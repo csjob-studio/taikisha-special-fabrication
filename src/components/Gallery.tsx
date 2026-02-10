@@ -38,10 +38,10 @@ export function Gallery() {
     const prevSlide = () => goToSlide(currentIndex - 1);
 
     return (
-        <section className="bg-black w-full py-20 md:py-32 relative overflow-hidden">
-            <div className="container mx-auto px-6 md:px-12 h-full flex flex-col justify-center">              
+        <section className="bg-black w-full h-full relative overflow-hidden">
+           <div className="mx-auto max-w-7xl w-full h-full px-6 md:px-12 flex items-center justify-center">            
                 {/* Carousel Container */}
-                <div ref={containerRef} className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-xl border border-white/10 shadow-2xl bg-gray-900">
+               <div ref={containerRef} className="relative w-full max-h-[70vh] aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-xl border border-white/10 shadow-2xl bg-gray-900">
 
                     {/* Track */}
                     <div className="gallery-track flex w-full h-full">
